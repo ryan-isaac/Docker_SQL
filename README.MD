@@ -1,5 +1,5 @@
 # Mysqldump to Analytical Report
-This docker file runs a python code -v 3.8 to download a table from the web, then process it to generate an excel file with 4 sheets. The URL link for the data could change as it's hosted on Google drive. If you receive an error related to downloading the data and the url, you may need to contact me to update the link inside the '.py' python file.
+This docker file runs a python code -v 3.8 to download a table from the web, then process it to generate an excel file with 4 sheets. 
 
 ## The program generates an analytical report with 4 sheets as follows:
 - Weekly_Stats <= Weekly statistics
@@ -38,8 +38,8 @@ To load this file in a Linux environment, make sure you have docker installed an
 
 	$ docker load < isaac_docker_mysqldump.tar.gz
 
-### Initial codes to load mysqldump file in a ubuntu linux environment
-Before running sql, you need to make sure that you have mysql-server installed on your machine. In a command line interface, in a ubuntu environment, you can use following codes or read the documentation page https://ubuntu.com/server/docs/databases-mysql:
+### Codes to load mysqldump file in a ubuntu linux environment
+Before running Mysql, you need to make sure that you have mysql-server installed on your machine. In a command line interface, in a ubuntu environment, you can use following codes or read the documentation page https://ubuntu.com/server/docs/databases-mysql:
 
 	$ sudo apt-get install mysql-server
 	$ sudo systemctl start mysql <= to start the service if it doesn't start automatically
@@ -72,7 +72,7 @@ In order to connect to the table from any place using a docker container with a 
 			escaped by '\' 
 			lines terminated by '\n';	
 		
-I had challenges in running mysql environment to export the new table inside docker due to its size, so I exported it using Datagrip, then uploaded it to the cloud to read it in python. 
+I had challenges in running mysql environment to export the new table inside docker due to its size, so I exported it using Datagrip, then uploaded it to the cloud to read it in python. The URL link for the data could change as it's hosted on Google drive. If you receive an error related to downloading the data and the url, you may need to contact me to update the link inside the '.py' python file.
 Depending on your settings and mysql version, you might face some errors in exporting to your file path. you will likely come across "MySQL server is running with the --secure-file-priv option so it cannot execute this statement"  error, you may read more about it on https://stackoverflow.com/questions/32737478/how-should-i-tackle-secure-file-priv-in-mysql
 
 After loading the table in python, financial_data_analysis.py processes the table to generate the desired analytical report. Sendgrid API is used to send the report as an attachment to an email. The API is removed for public publishing but can be replaced if you create a new API. refer to their website for more details "https://docs.sendgrid.com/for-developers/sending-email/api-getting-started"
