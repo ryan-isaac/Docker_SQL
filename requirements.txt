@@ -1,0 +1,20 @@
+# python requirements to run the quiz codes
+
+pandas  \
+
+datetime \
+
+numpy \
+
+XlsxWriter \
+
+openpyxl \
+
+sendgrid \
+
+jinja2 \
+
+pybase64 
+
+
+
