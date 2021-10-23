@@ -165,7 +165,7 @@ attachment.disposition = Disposition('attachment')
 attachment.content_id = ContentId('Example Content ID')
 message.attachment = attachment
 try:
-    sendgrid_client = SendGridAPIClient(os.environ.get("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"))
+    sendgrid_client = SendGridAPIClient(os.environ.get("Sendgrid_API_Key"))
     response = sendgrid_client.send(message)
     print(response.status_code)
     print(response.body)
