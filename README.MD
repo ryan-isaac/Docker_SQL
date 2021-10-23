@@ -22,28 +22,28 @@ Example:
 - To build the container
 Save the files (Dockerfile, requirements.txt, financial_data_analysis.py) in one directory and run the following inside the same directory
 
-$ docker build --tag ryan/mysqldump-docker:1 .
+$> docker build --tag ryan/mysqldump-docker:1 .
 
 - To run the container and save the output file to Downloads directory on your host machine
 
-$ docker run -it -v ~/Downloads:/usr/src/app/output ryan/sql_mysqldump-docker:1
+$> docker run -it -v ~/Downloads:/usr/src/app/output ryan/sql_mysqldump-docker:1
 
 - Compress and save the container image:
 You can save the built image and run it somewhere else directly from a compressed .tar.gz file.
 
-$ docker save ryan/python-docker:1 | gzip > isaac_docker_mysqldump.tar.gz
+$> docker save ryan/python-docker:1 | gzip > isaac_docker_mysqldump.tar.gz
 
 - Unzip and load isaac_docker_mysqldump.tar.gz
 To load this file in a Linux environment, make sure you have docker installed and run the following in the same directory
 
-$ docker load < isaac_docker_mysqldump.tar.gz
+$> docker load < isaac_docker_mysqldump.tar.gz
 
 ### Initial codes to load mysqldump file in a ubuntu linux environment
 Before running sql, you need to make sure that you have mysql-server installed on your machine. In a command line interface, in a ubuntu environment, you can use following codes or read the documentation page https://ubuntu.com/server/docs/databases-mysql:
 
-$ sudo apt-get install mysql-server
-$ sudo systemctl start mysql <= to start the service if it doesn't start automatically
-$ /usr/bin/mysql -u root -p <= to access mysql and start coding
+$> sudo apt-get install mysql-server
+$> sudo systemctl start mysql <= to start the service if it doesn't start automatically
+$> /usr/bin/mysql -u root -p <= to access mysql and start coding
 	$> CREATE DATABASE customers_data;
 	$> USE customers_data;
 	$> SOURCE data_example.sql; <= mysqldump file that you want to load, from the same directory
@@ -63,7 +63,7 @@ $ /usr/bin/mysql -u root -p <= to access mysql and start coding
 
 
 In order to connect to the table from any place using a docker container with a python program, the data in the joined table has to be exported and I chose to host it on Google Drive to access it using a public url in python to retreive the data.  To export the table, you may use the command line or export it directly from mysql. You have to check for the best parameters to set based on the data and the characters or encoding used. Example codes are provided below:
-$ /usr/bin/mysql --user=user --password -h <localhost> --execute "SELECT * FROM customers_data.joined;" > '//<your full directory path>//cust_data.csv'
+$> /usr/bin/mysql --user=user --password -h <localhost> --execute "SELECT * FROM customers_data.joined;" > '//<your full directory path>//cust_data.csv'
 	
 	$> select * from joined
 		into outfile '//<your full directory path>//cust_data.csv'
@@ -80,4 +80,3 @@ After loading the table in python, financial_data_analysis.py processes the tabl
 
 
 contact email: isaac-ca@outlook.com
-
