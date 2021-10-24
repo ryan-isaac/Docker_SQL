@@ -1,4 +1,4 @@
-# python requirements to run the quiz codes
+# Python modules required to run the program
 
 pandas  \
 
